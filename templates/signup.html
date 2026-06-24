@@ -15,9 +15,13 @@
     <p>Please fill up the below form to create an account</p>
 
     <form action="/signup" method="post">
-        Username: <input type="text" name="u_name" placeholder="Enter Username"> <br>
-        Email: <input type="email" name="e_mail" placeholder="Enter Email"></type> <br>
-        password: <input type="password" name="p_word" placeholder="Enter Email"></type>
+        <input type="radio" name="u_type" value="user" required> User
+        <input type="radio" name="u_type" value="artist" required> Artist
+        <br>
+
+        Username: <input type="text" name="u_name" placeholder="Enter Username" required> <br>
+        Email: <input type="email" name="e_mail" placeholder="Enter Email" required></type> <br>
+        password: <input type="password" name="p_word" placeholder="Enter Email" required></type>
         <input type="submit" value="SignUp">
     </form>
 </body>
