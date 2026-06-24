@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <nav>
+    <a href="/">Home</a>
+    <a href="/signup">SignUp</a>
+   </nav>
+    {{signup_message}}
+    <h1>Welcome to the Login Page</h1>
+    <p>Enter your credentials to login</p>
+
+     <form action="/login" method="post">
+        Email: <input type="email" name="e_mail" placeholder="Enter Email"></type> <br>
+        password: <input type="password" name="p_word" placeholder="Enter Email"></type>
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+</html>
