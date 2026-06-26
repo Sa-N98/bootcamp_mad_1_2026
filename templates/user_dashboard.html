@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>This is your personal music dashboard.</p>
+
+    <h3>Your Activity</h3>
+    <ul>
+        <li><a href="/favorites">My Favorites</a></li>
+        <li><a href="/playlists">My Playlists</a></li>
+        <li><a href="/explore">Explore New Music</a></li>
+    </ul>
+
+    <h3>Top 5 songs</h3>
+
+    {% for song in top_5 %}
+    <audio id="player-{{ song.title }}" src="/static/{{song.file_path}}"></audio>
+    <div>
+    <button onclick="document.getElementById('player-{{ song.title }}').play()">Play</button>
+    <button onclick="document.getElementById('player-{{ song.title }}').pause()">Pause</button>
+    </div>
+
+    <p>Title: {{song.title}}</p>
+    <p>Artist: {{song.artist}}</p>
+    <p>Likes: {{song.total_favourits}}</p>
+    <br>
+    {%endfor%}
+
+</body>
+</html>

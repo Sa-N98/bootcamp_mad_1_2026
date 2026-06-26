@@ -5,7 +5,8 @@ def Signup(app):
     @app.route('/signup', methods=["GET", "POST"])
     def signup():
         if request.method == "GET":
-            return render_template('signup.html')
+            message = request.args.get('message', '')
+            return render_template('signup.html', ligin_fail_message = message)
         
         elif request.method == "POST":
             from_username = request.form['u_name']
