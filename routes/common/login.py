@@ -20,10 +20,10 @@ def Login(app):
                 # print(f'query_output_username {query_output.username}')
                 # print(f'query_output_type {query_output.cretential_type}')
 
-                if query_output.cretential_type == 'user':
-                    return redirect(url_for('user_dashbord', username = query_output.username))
+                if query_output.cretential_type == 'user':  
+                    return redirect(url_for('user_dashbord', username_id = query_output.id))
                 elif query_output.cretential_type == 'artist':
-                    return render_template('artist_dashboard.html', username = query_output.username)
+                    return render_template('artist_dashboard.html', username_id = query_output.id)
 
             else:
             

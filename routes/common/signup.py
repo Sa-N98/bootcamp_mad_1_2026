@@ -20,12 +20,28 @@ def Signup(app):
                  return "An account with this email already exists. Please try a different one."
             else:
                 new_credentials = credentials(
-                    username = from_username,
                     email = from_email,
                     password = from_password,
                     cretential_type = from_type
                 )
+
                 db.session.add(new_credentials)
+                db.session.flush()
+
+                if new_credentials.cretential_type == 'user':
+                    new_customer = customers(
+                        id = new_credentials.id,
+                        username = from_username
+                    )
+
+                    db.session.add(new_customer)
+                elif new_credentials.cretential_type == 'artist':
+                    new_artist = artist(
+                        id = new_credentials.id,
+                        artist_name = from_username
+                    )
+                    db.session.add(new_artist)
+                
                 db.session.commit()
 
             return redirect(url_for('login', message = 'Signup Successful!!!'))

@@ -5,11 +5,12 @@ def Dashbord(app):
     @app.route('/user_dashbord', methods=["GET", "POST"])
     def user_dashbord():
         if request.method == "GET":
-            output = request.args.get('username', '') 
-            all_musics = music_catalog.query.order_by(music_catalog.total_favourits.desc()).all()
+            uid = request.args.get('username_id', '') 
 
+            user = customers.query.filter_by(id = uid).first()
+            all_musics = music_catalog.query.order_by(music_catalog.total_favourits.desc()).all()
             top_5_songs = all_musics[:5]
 
-            print(top_5_songs)
+           
 
-            return render_template('user_dashboard.html', username = output, top_5= top_5_songs)
+            return render_template('user_dashboard.html', session_user = user, top_5= top_5_songs)

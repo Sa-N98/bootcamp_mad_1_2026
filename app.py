@@ -7,6 +7,8 @@ from routes.common.landing_page import Landing_page
 from routes.common.login import Login
 from routes.common.signup import Signup
 from routes.users.dashbord import Dashbord as uDashbord
+from routes.users.explore import Explore
+from routes.users.favourits import Favourits
 import os
 
 app = Flask(__name__)
@@ -22,6 +24,8 @@ Landing_page(app)
 Login(app)
 Signup(app)
 uDashbord(app)
+Explore(app)
+Favourits(app)
 
 
 if __name__ == "__main__":
