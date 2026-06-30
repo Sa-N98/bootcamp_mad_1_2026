@@ -10,14 +10,20 @@
         <a href="/">Home</a>
         <a href="/logout">Logout</a>
     </nav>
-    <h1>Artist Studio: Welcome, {{ username.artist_name }}!</h1>
+    <h1>Artist Studio: Welcome, {{ session_user.artist_name }}!</h1>
     <p>Manage your music and track your reach.</p>
 
-    <h3>Artist Tools</h3>
-    <ul>
-        <li><a href="/upload">Upload New Song</a></li>
-        <li><a href="/my-songs">Manage My Music</a></li>
-        <li><a href="/analytics">View Listenership Analytics</a></li>
-    </ul>
+    <form action="/upload_song" method="post" enctype="multipart/form-data">
+        <label for="title">Song Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="file_path">Song File:</label>
+        <input type="file" id="file_path" name="file_path" required><br><br>
+
+
+        <input type="text" id="artist" name="artist" value="{{session_user.artist_name}}" hidden><br><br>
+
+        <button type="submit">Upload Song</button>
+    </form>
 </body>
 </html>

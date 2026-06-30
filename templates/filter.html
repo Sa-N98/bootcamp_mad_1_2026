@@ -6,11 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/search" method="post">
-        <input type="text" name="user_query" placeholder="Search songs" required>
-        <input type="submit" value="Search"> 
-    </form>
-    <hr>
+    
     {% for song in songs %}
     <audio id="player-{{ song.title }}" src="/static/{{song.file_path}}"></audio>
     <div>
@@ -21,14 +17,8 @@
     <p>Title: {{song.title}}</p>
     <p>Artist: {{song.artist}}</p>
     <p>Likes: {{song.total_favourits}}</p>
-    
-    <form action="/add_favourits" method="post">
-        <input type="text" name='song_id' value="{{song.id}}" hidden>
-        <input type="text" name='user_id' value="{{session_user_id}}" hidden>
-        <input type="submit" value="favourit">
-    </form>
-
     <br>
     {%endfor%}
+
 </body>
 </html>
